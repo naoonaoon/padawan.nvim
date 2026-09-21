@@ -1,6 +1,6 @@
 -- Install
 vim.pack.add({
-    { src = "https://github.com/rmehri01/onenord.nvim" },
+    { src = "https://github.com/rebelot/kanagawa.nvim" },
     { src = "https://github.com/FylerOrg/Fyler.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/folke/todo-comments.nvim" },
@@ -8,7 +8,7 @@ vim.pack.add({
 })
 
 -- Theme
-vim.cmd([[colorscheme onenord]])
+vim.cmd([[colorscheme kanagawa-dragon]])
 
 -- Icon
 require("mini.icons").setup()
