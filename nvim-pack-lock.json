@@ -4,6 +4,10 @@
       "rev": "4555d8d6c82d0105c664f815b465e9384c500470",
       "src": "https://github.com/FylerOrg/Fyler.nvim"
     },
+    "barbar.nvim": {
+      "rev": "337ecfadb8bf005050990bf2f624dc4fc828dabd",
+      "src": "https://github.com/romgrk/barbar.nvim"
+    },
     "conform.nvim": {
       "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
@@ -11,6 +15,10 @@
     "flash.nvim": {
       "rev": "5f0f270fdc7c5b0c21d903ee85b9cb06f2ac636a",
       "src": "https://github.com/folke/flash.nvim"
+    },
+    "iceberg.vim": {
+      "rev": "23835d5ed696436f716cbfdb56a93a7850fe3b18",
+      "src": "https://github.com/cocopon/iceberg.vim"
     },
     "lazygit.nvim": {
       "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
@@ -35,10 +43,6 @@
     "nvim-treesitter": {
       "rev": "5cb0114e6242625db56dd6440e945ed1ece10bc7",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
-    },
-    "onenord.nvim": {
-      "rev": "5240bfb79bcab7e03508626c5283cfc417b79169",
-      "src": "https://github.com/rmehri01/onenord.nvim"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
