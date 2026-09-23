@@ -1,14 +1,15 @@
 -- Install
 vim.pack.add({
-    { src = "https://github.com/rebelot/kanagawa.nvim" },
+    { src = "https://github.com/cocopon/iceberg.vim" },
     { src = "https://github.com/FylerOrg/Fyler.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/folke/todo-comments.nvim" },
     { src = "https://github.com/nvim-mini/mini.nvim" },
+    { src = "https://github.com/romgrk/barbar.nvim"}
 })
 
 -- Theme
-vim.cmd([[colorscheme kanagawa-dragon]])
+vim.cmd([[colorscheme iceberg]])
 
 -- Icon
 require("mini.icons").setup()
@@ -21,7 +22,9 @@ require("fyler").setup({
 })
 
 -- Tab Line
-require("mini.tabline").setup()
+require("barbar").setup({
+    auto_hide = 1
+})
 require("mini.bufremove").setup()
 
 -- Status Line
