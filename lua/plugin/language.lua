@@ -4,38 +4,26 @@ vim.pack.add({
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/stevearc/conform.nvim" },
-    { src = "https://github.com/nvim-mini/mini.nvim" },
 })
 
--- NOTE: Check LSP By `:Mason`
-local language_servers = {
-    "lua_ls",
-    "expert",
-}
+local language = require("config.language")
+local servers = {}
+local parsers = {}
+local file_types = {}
+local formatters = {}
 
--- NOTE: Check Parser By `:TSInstall <Tab>`
-local parsers = {
-    "lua",
-    "elixir",
-}
-
--- NOTE: Check File Type By `:set filetype?`
-local file_types = {
-    "lua",
-    "elixir",
-}
-
--- NOTE: Check Formatter By `:ConformInfo`
-local formatters = {
-    lua = { "stylua" },
-    elixir = { "mix" },
-}
+for file_type, config in pairs(language) do
+    table.insert(servers, config.server)
+    table.insert(parsers, config.parser)
+    table.insert(file_types, config.file_type)
+    formatters[file_type] = config.formatters
+end
 
 -- LSP Manager
 require("mason").setup()
 
 -- Enable LSP
-vim.lsp.enable(language_servers)
+vim.lsp.enable(servers)
 
 -- Tree-Sitter
 require("nvim-treesitter").install(parsers)
@@ -54,6 +42,3 @@ require("conform").setup({
         lsp_format = "fallback",
     },
 })
-
--- Completion
-require("mini.completion").setup()

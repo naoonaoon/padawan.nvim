@@ -1,6 +1,6 @@
-require("plugin.interface")
-require("plugin.lsp")
-require("plugin.util")
+require("config.option")
+require("config.keymap")
 
-require("config.options")
-require("config.keymaps")
+require("plugin.view")
+require("plugin.language")
+require("plugin.editor")
