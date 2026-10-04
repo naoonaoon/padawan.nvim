@@ -6,18 +6,29 @@ vim.pack.add({
     { src = "https://github.com/stevearc/conform.nvim" },
 })
 
+-- Read Config
 local language = require("config.language")
-local servers = {}
-local parsers = {}
-local file_types = {}
-local formatters = {}
 
-for file_type, config in pairs(language) do
-    table.insert(servers, config.server)
-    table.insert(parsers, config.parser)
-    table.insert(file_types, config.file_type)
-    formatters[file_type] = config.formatters
-end
+-- Read Language Server
+local servers = vim.iter(language):map(function(_, config)
+    return config.server
+end):totable()
+
+-- Read Tree-Sitter
+local parsers = vim.iter(language):map(function(file_type, config)
+    return config.parser or file_type
+end):totable()
+
+-- Read File Type
+local file_types = vim.iter(language):map(function(_, config)
+    return config.file_type
+end):totable()
+
+-- Read Formatter
+local formatters = vim.iter(language):fold({}, function(result, _, config)
+    result[config.file_type] = config.formatters
+    return result
+end)
 
 -- LSP Manager
 require("mason").setup()
