@@ -7,7 +7,9 @@ vim.pack.add({
 
 -- Support Editing
 require("mini.pairs").setup()
-require("mini.diff").setup()
+require("mini.diff").setup({
+    view = { style = "sign" },
+})
 require("mini.indentscope").setup()
 require("mini.completion").setup()
 
