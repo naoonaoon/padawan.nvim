@@ -9,26 +9,15 @@ vim.pack.add({
 -- Read Config
 local language = require("config.language")
 
--- Read Language Server
-local servers = vim.iter(language):map(function(_, config)
-    return config.server
-end):totable()
-
--- Read Tree-Sitter
-local parsers = vim.iter(language):map(function(file_type, config)
-    return config.parser or file_type
-end):totable()
-
--- Read File Type
-local file_types = vim.iter(language):map(function(_, config)
-    return config.file_type
-end):totable()
-
--- Read Formatter
-local formatters = vim.iter(language):fold({}, function(result, _, config)
-    result[config.file_type] = config.formatters
-    return result
-end)
+-- Build plugin configuration from language definitions
+local servers, parsers, file_types, formatters = {}, {}, {}, {}
+for language_name, config in pairs(language) do
+    local file_type = config.file_type
+    servers[#servers + 1] = config.server
+    parsers[#parsers + 1] = config.parser or language_name
+    file_types[#file_types + 1] = file_type
+    formatters[file_type] = config.formatters
+end
 
 -- LSP Manager
 require("mason").setup()
