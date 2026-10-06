@@ -1,12 +1,14 @@
 return {
     lua = {
-        server = "lua_ls",
-        file_type = "lua",
+        servers = { "lua_ls" },
+        parsers = { "lua" }, 
+        filetypes = { "lua" },
         formatters = { "stylua" },
     },
     elixir = {
-        server = "expert",
-        file_type = "elixir",
+        servers = { "expert" },
+        parsers = { "elixir" },
+        filetypes = { "elixir" },
         formatters = { "mix" },
     },
 }

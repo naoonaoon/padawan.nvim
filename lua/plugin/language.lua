@@ -7,28 +7,33 @@ vim.pack.add({
 })
 
 -- Read Config
-local language = require("config.language")
-
--- Build plugin configuration from language definitions
-local servers, parsers, file_types, formatters = {}, {}, {}, {}
-for language_name, config in pairs(language) do
-    local file_type = config.file_type
-    servers[#servers + 1] = config.server
-    parsers[#parsers + 1] = config.parser or language_name
-    file_types[#file_types + 1] = file_type
-    formatters[file_type] = config.formatters
+local languages = vim.tbl_values(require("config.language"))
+local function pluck(key)
+    return vim.iter(languages)
+        :map(function(l)
+            return l[key]
+        end)
+        :flatten()
+        :totable()
 end
+local servers = pluck("servers")
+local parsers = pluck("parsers")
+local filetypes = pluck("filetypes")
+local formatters = vim.iter(languages):fold({}, function(acc, l)
+    for _, filetype in ipairs(l.filetypes) do
+        acc[filetype] = l.formatters
+    end
+    return acc
+end)
 
 -- LSP Manager
 require("mason").setup()
-
--- Enable LSP
 vim.lsp.enable(servers)
 
 -- Tree-Sitter
 require("nvim-treesitter").install(parsers)
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = file_types,
+    pattern = filetypes,
     callback = function()
         vim.treesitter.start()
     end,

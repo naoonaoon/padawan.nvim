@@ -32,7 +32,6 @@ vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {
 })
 
 -- Zne Mode
-require("zen-mode").setup()
 vim.keymap.set("n", "<leader>zz", "<cmd>ZenMode<cr>", {
     desc = "Boot Zen Mode",
 })
