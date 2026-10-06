@@ -1,21 +1,38 @@
+local g = vim.g
+local km = vim.keymap
+
 -- Leader
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+g.mapleader = " "
+g.maplocalleader = " "
+
+-- Explorer
+vim.keymap.set("n", "<leader>e", function()
+    require("fyler").open()
+end, { desc = "Open Explorer" })
 
 -- Buffer
-vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", {
+km.set("n", "<leader>bd", "<cmd>bd<cr>", {
     desc = "Close Buffer",
 })
-
-vim.keymap.set("n", "H", "<cmd>bprevious<cr>", {
+km.set("n", "H", "<cmd>bprevious<cr>", {
     desc = "Previous Buffer",
 })
-
-vim.keymap.set("n", "L", "<cmd>bnext<cr>", {
+km.set("n", "L", "<cmd>bnext<cr>", {
     desc = "Next Buffer",
 })
 
 -- Information
-vim.keymap.set("n", "<leader>d", function()
+km.set("n", "<leader>d", function()
     vim.diagnostic.open_float()
 end, { desc = "Show Diagnostic Details" })
+
+-- Support Git
+vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {
+    desc = "Open Lazygit",
+})
+
+-- Zne Mode
+require("zen-mode").setup()
+vim.keymap.set("n", "<leader>zz", "<cmd>ZenMode<cr>", {
+    desc = "Boot Zen Mode",
+})

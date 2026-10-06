@@ -12,14 +12,3 @@ require("mini.diff").setup({
 })
 require("mini.indentscope").setup()
 require("mini.completion").setup()
-
--- Support Git
-vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {
-    desc = "Open Lazygit",
-})
-
--- Zne Mode
-require("zen-mode").setup()
-vim.keymap.set("n", "<leader>zz", "<cmd>ZenMode<cr>", {
-    desc = "Boot Zen Mode",
-})

@@ -21,10 +21,6 @@ require("fyler").setup({
     integrations = { icon = "mini_icons" },
 })
 
-vim.keymap.set("n", "<leader>e", function()
-    require("fyler").open()
-end, { desc = "Open Explorer" })
-
 -- Buffer Line
 require("bufferline").setup({
     options = { separator_style = "slant" },
