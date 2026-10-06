@@ -1,10 +1,10 @@
 -- Install
 vim.pack.add({
     { src = "https://github.com/catppuccin/nvim" },
-    { src = "https://github.com/FylerOrg/Fyler.nvim" },
     { src = "https://github.com/nvim-mini/mini.nvim" },
     { src = "https://github.com/akinsho/bufferline.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
+    { src = "https://github.com/folke/zen-mode.nvim" },
     { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 })
 
@@ -14,12 +14,6 @@ vim.cmd("colorscheme catppuccin-frappe")
 -- Icon
 require("mini.icons").setup()
 require("mini.icons").mock_nvim_web_devicons()
-
--- Explorer
-require("fyler").setup({
-    kind = "floating",
-    integrations = { icon = "mini_icons" },
-})
 
 -- Buffer Line
 require("bufferline").setup({
@@ -38,6 +32,9 @@ require("lualine").setup({
         lualine_z = { "%l:%L" },
     },
 })
+
+-- Zen Mode
+require("zen-mode").setup()
 
 -- Render Markdown
 require("render-markdown").setup({
