@@ -30,8 +30,3 @@ end, { desc = "Show Diagnostic Details" })
 vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<cr>", {
     desc = "Open Lazygit",
 })
-
--- Zne Mode
-vim.keymap.set("n", "<leader>zz", "<cmd>ZenMode<cr>", {
-    desc = "Boot Zen Mode",
-})

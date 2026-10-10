@@ -6,6 +6,6 @@ require("mason-lspconfig").setup({
         "stylua",
 
         -- elixir
-        "expert",
+        "elixirls",
     },
 })
