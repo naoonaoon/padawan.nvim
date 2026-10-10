@@ -1,15 +1,11 @@
 -- Install
 vim.pack.add({
-    { src = "https://github.com/catppuccin/nvim" },
     { src = "https://github.com/nvim-mini/mini.nvim" },
     { src = "https://github.com/akinsho/bufferline.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/folke/zen-mode.nvim" },
     { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 })
-
--- Theme
-vim.cmd("colorscheme catppuccin-frappe")
 
 -- Icon
 require("mini.icons").setup()

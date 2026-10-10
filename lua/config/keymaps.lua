@@ -6,9 +6,9 @@ g.mapleader = " "
 g.maplocalleader = " "
 
 -- Explorer
-vim.keymap.set("n", "<leader>e", function()
-    require("fyler").open()
-end, { desc = "Open Explorer" })
+vim.keymap.set("n", "<leader>e", "<cmd>Fyler<cr>", {
+    desc = "Open Explorer",
+})
 
 -- Buffer
 km.set("n", "<leader>bd", "<cmd>bd<cr>", {
