@@ -1,7 +1,6 @@
 -- Install
 vim.pack.add({
     { src = "https://github.com/nvim-mini/mini.nvim" },
-    { src = "https://github.com/akinsho/bufferline.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
     { src = "https://github.com/folke/zen-mode.nvim" },
     { src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
@@ -10,12 +9,6 @@ vim.pack.add({
 -- Icon
 require("mini.icons").setup()
 require("mini.icons").mock_nvim_web_devicons()
-
--- Buffer Line
-require("bufferline").setup({
-    options = { separator_style = "slant" },
-    highlights = require("catppuccin.special.bufferline").get_theme(),
-})
 
 -- Status Line
 require("lualine").setup({
