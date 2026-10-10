@@ -1,5 +1,0 @@
-vim.pack.add({
-    { src = "https://github.com/nvim-lua/plenary.nvim" },
-    { src = "https://github.com/kdheepak/lazygit.nvim" },
-})
-require("mini.indentscope").setup()

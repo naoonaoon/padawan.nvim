@@ -6,13 +6,13 @@ vim.pack.add({
 
     -- editor
     { src = "https://github.com/FylerOrg/Fyler.nvim" },
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
+    { src = "https://github.com/kdheepak/lazygit.nvim" },
 
     -- utils
     { src = "https://github.com/nvim-mini/mini.nvim" },
 
     -- be doing
-    { src = "https://github.com/nvim-lua/plenary.nvim" },
-    { src = "https://github.com/kdheepak/lazygit.nvim" },
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
