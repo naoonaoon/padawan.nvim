@@ -9,3 +9,4 @@ require("plugins.deps.mini.icons")
 -- editor
 require("plugins.deps.fyler")
 require("plugins.deps.mini.pairs")
+require("plugins.deps.mini.completion")
