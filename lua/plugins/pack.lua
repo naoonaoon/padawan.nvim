@@ -3,10 +3,14 @@ vim.pack.add({
     { src = "https://github.com/catppuccin/nvim" },
     { src = "https://github.com/akinsho/bufferline.nvim" },
     { src = "https://github.com/nvim-lualine/lualine.nvim" },
+
+    -- editor
     { src = "https://github.com/FylerOrg/Fyler.nvim" },
 
-    -- be doing
+    -- utils
     { src = "https://github.com/nvim-mini/mini.nvim" },
+
+    -- be doing
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/kdheepak/lazygit.nvim" },
     { src = "https://github.com/mason-org/mason.nvim" },
