@@ -20,9 +20,4 @@ vim.pack.add({
     -- language support
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/stevearc/conform.nvim" },
-
-    -- debug
-    { src = "https://github.com/mfussenegger/nvim-dap" },
-    { src = "https://github.com/rcarriga/nvim-dap-ui" },
-    { src = "https://github.com/nvim-neotest/nvim-nio" },
 })
