@@ -9,12 +9,15 @@ vim.pack.add({
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/kdheepak/lazygit.nvim" },
 
-    -- utils
+    -- util
     { src = "https://github.com/nvim-mini/mini.nvim" },
 
-    -- be doing
+    -- language server
     { src = "https://github.com/mason-org/mason.nvim" },
+    { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
+
+    -- language support
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/stevearc/conform.nvim" },
 })
