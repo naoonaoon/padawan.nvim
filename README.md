@@ -1,97 +1,72 @@
 # padawan.nvim
 
-> A minimal, opinionated Neovim configuration built around `mini.nvim` and native `vim.pack`.
-
-<pre>
-  _ __   __ _  __| | __ ___      ____ _ _ __
- | '_ \ / _` |/ _` |/ _` \ \ /\ / / _` | '_ \
- | |_) | (_| | (_| | (_| |\ V  V / (_| | | | |
- | .__/ \__,_|\__,_|\__,_| \_/\_/ \__,_|_| |_|
- |_|
-</pre>
-
-Simple by design. Easy to understand. Focused on the editor.
+> A Neovim configuration using native `vim.pack` for plugins.
 
 ## Features
 
-- Catppuccin Frappe theme, floating file explorer, buffer line, and status line
-- Relative line numbers, cursor line, smart-case search, system clipboard, and four-space indentation
-- Lua and Elixir LSP support, Tree-sitter highlighting, completion, and format-on-save
-- Automatic bracket pairing, Git change indicators, indentation scopes, and Markdown rendering
-- Lazygit and Zen Mode integrations
+- Catppuccin Frappé theme, bufferline, lualine, and a floating Fyler file explorer
+- Absolute and relative line numbers, cursor line, smart-case search, system clipboard, and four-space indentation
+- Lua and Elixir Tree-sitter highlighting, LSP configuration, completion, and format-on-save
+- Automatic pairs, Git change signs, and indentation scopes from `mini.nvim`
+- Lazygit integration
 
 ## Requirements
 
-- Neovim 0.12 or later (uses native `vim.pack`)
-- Git (used by `vim.pack` to fetch plugins)
+- Neovim 0.12 or later (`vim.pack` is used to install plugins)
+- Git for fetching plugins
+- `stylua` for Lua formatting and `mix` for Elixir formatting
+- `lazygit` to use `<leader>gg`
 
-Optional tools are needed only for the integrations or languages you use:
-
-- [lazygit](https://github.com/jesseduffield/lazygit) for `<leader>gg`
-- [Mason](https://github.com/mason-org/mason.nvim)-managed LSP servers: `lua_ls` and/or `expert`
-- `stylua` to format Lua and `mix` to format Elixir
-
-For example, on macOS:
-
-```bash
-brew install neovim git lazygit stylua
-```
-
-Install LSP servers from Neovim with `:Mason` (or `:MasonInstall lua-language-server expert`). Plugins and configured Tree-sitter parsers are fetched when Neovim starts.
+The configuration uses Mason and mason-lspconfig for language tools. Its `ensure_installed` list currently contains `lua_ls`, `stylua`, and `expert`. The Lua and Elixir LSP servers are `lua_ls` and `expert`, respectively. Formatting is configured separately through Conform, which calls `stylua` or `mix` from the executable path.
 
 ## Installation
 
-Clone the repository into your Neovim configuration directory:
+Clone this repository into your Neovim configuration directory, then start Neovim:
 
 ```bash
-git clone https://github.com/naoonaoon/padawan.nvim.git ~/.config/nvim
-```
-
-Then launch Neovim:
-
-```bash
+git clone https://github.com/naoonaoon/config-neovim.git ~/.config/nvim
 nvim
 ```
 
+`vim.pack` fetches the plugins listed in `lua/plugins/pack.lua` on startup. The repository also contains `nvim-pack-lock.json` with pinned plugin revisions.
+
 ## Keymaps
 
-The leader key is set to `<Space>`.
-
-### Normal mode
+The leader and local leader keys are both `<Space>`. These mappings are defined in normal mode.
 
 | Key | Action |
 | --- | --- |
-| `<leader>e` | Open the floating file explorer |
+| `<leader>e` | Open the floating Fyler explorer |
 | `<leader>bd` | Close the current buffer |
-| `H` | Move to the previous buffer |
-| `L` | Move to the next buffer |
+| `H` | Switch to the previous buffer |
+| `L` | Switch to the next buffer |
 | `<leader>d` | Show diagnostics in a floating window |
 | `<leader>gg` | Open Lazygit |
-| `<leader>zz` | Toggle Zen Mode |
 
-## Supported languages
+## Language support
 
-| Language | LSP server | Formatter |
-| --- | --- | --- |
-| Lua | `lua_ls` | `stylua` |
-| Elixir | `expert` | `mix` |
+| File type | LSP server | Tree-sitter | Formatter |
+| --- | --- | --- | --- |
+| Lua | `lua_ls` | `lua` | `stylua` |
+| Elixir | `expert` | `elixir` | `mix` |
 
-Format-on-save uses the configured formatter, falling back to the active LSP when available.
+Tree-sitter starts for Lua and Elixir buffers. Conform formats on save with a one-second timeout and falls back to an active LSP formatter when needed.
 
 ## Structure
 
 ```text
-nvim
-├── init.lua                    # Loads options, keymaps, and plugin groups
+.
+├── init.lua                    # Loads configuration and plugins
 ├── lua
 │   ├── config
-│   │   ├── keymap.lua          # Global keymaps and leader keys
-│   │   ├── language.lua        # Language server, parser, and formatter definitions
-│   │   └── option.lua          # Neovim options
-│   └── plugin
-│       ├── editor.lua          # Editing, Git, and Zen Mode plugins
-│       ├── language.lua        # LSP, Tree-sitter, and Conform setup
-│       └── view.lua            # Theme and UI plugins
-├── stylua.toml
+│   │   ├── autocmds.lua        # Starts Tree-sitter for Lua and Elixir
+│   │   ├── keymaps.lua         # Leader keys and mappings
+│   │   └── options.lua         # Editor options
+│   └── plugins
+│       ├── init.lua            # Loads plugin configuration
+│       ├── pack.lua            # vim.pack plugin list
+│       └── deps/              # Individual plugin setup files
+├── nvim-pack-lock.json         # vim.pack lockfile
+├── stylua.toml                # Lua formatter settings
 └── README.md
 ```
